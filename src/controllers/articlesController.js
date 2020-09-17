@@ -3,7 +3,6 @@ const { Article } = require('../models/Article');
 exports.getAll = async (req, res) => {
     try {
         const articles = await Article.query().eager('[category, user]').select('*');
-        console.log(articles);
         if(articles){
             return res.send(articles);
         } else {
