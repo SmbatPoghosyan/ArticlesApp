@@ -1,4 +1,3 @@
-const db = require('../../data/db');
 const permit = require('../middlewares/authorization');
 const authorization = require('../controllers/authorizationController');
 const categories = require('../controllers/categoriesController');

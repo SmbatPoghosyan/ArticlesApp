@@ -1,11 +1,10 @@
 require('dotenv').config();
+const cors = require('cors')
 const Knex = require('knex');
 const { Model } = require('objection');
 const knexConfig = require('../knexfile')[process.env.NODE_ENV || 'development'];
 const knex = Knex(knexConfig);
 Model.knex(knex);
-
-
 const express = require('express');
 const multer  = require('multer');
 const http = require('http');
@@ -14,6 +13,8 @@ const AppRoutes = require('./routes/routes');
 const app = express();
 const port = process.env.PORT || 9000
 
+
+app.use(cors());
 app.use(bodyParser.json());
 
 new AppRoutes(app, multer({ dest: '/tmp/routes/' })).routes();
