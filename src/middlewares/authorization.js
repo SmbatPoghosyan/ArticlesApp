@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 module.exports = function permit(...permittedRoles){
     return (req, res, next) => {
-        const token = req.headers["x-auth-token"];
+        const token = req.headers["Authorization"];
         if (token) {
             const user = jwt.verify(token, process.env.JWT_SECRET);
             req.user = user;
